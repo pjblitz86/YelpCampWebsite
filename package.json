@@ -1,0 +1,23 @@
+{
+  "name": "yelpcampwebsite",
+  "version": "1.0.0",
+  "description": "yelpcamp website with node.js and mongodb",
+  "main": "app.js",
+  "dependencies": {
+    "mongodb": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjblitz86/YelpCampWebsite.git"
+  },
+  "author": "pj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pjblitz86/YelpCampWebsite/issues"
+  },
+  "homepage": "https://github.com/pjblitz86/YelpCampWebsite#readme"
+}
