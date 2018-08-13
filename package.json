@@ -4,6 +4,7 @@
   "description": "yelpcamp website with node.js and mongodb",
   "main": "app.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cat-me": "^1.0.3",
     "chuck-norris-jokes": "^0.1.1",
     "ejs": "^2.6.1",
