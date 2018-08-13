@@ -13,9 +13,8 @@ app.get("/", function(req, res) {
 });
 
 app.get("/friends", function(req, res) {
-  
   res.render("friends", {friends: friends});
-})
+});
 
 // POST REQUEST
 app.post("/addfriend", function(req, res) {
