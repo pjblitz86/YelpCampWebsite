@@ -6,9 +6,11 @@ var express     = require('express'),
     seedDB      = require("./seeds"),
     Comment     = require("./models/comment");
 
+// SET UP
 mongoose.connect("mongodb://localhost:27017/yelpcamp", { useNewUrlParser: true });
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + "/public"));
 
 // seed the db with starter data
 seedDB();
