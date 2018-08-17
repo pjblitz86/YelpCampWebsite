@@ -112,16 +112,35 @@ app.post("/campgrounds/:id/comments", function(req, res) {
         if(err) {
           console.log(err);
         } else {
+          // connect new comment to campground
           campground.comments.push(comment);
           campground.save();
+          // redirect to campground show page
           res.redirect("/campgrounds/"+campground._id);
         }
       });
     }
   });
-  
-  // connect new comment to campground
-  // redirect to campground show page
+});
+
+//==============
+// AUTH ROUTES
+//==============
+app.get('/register', function(req, res) {
+  res.render("register");
+});
+
+app.post('/register', function(req, res) {
+  var newUser = new User({username: req.body.username});
+  User.register(newUser, req.body.password, function(err, user) {
+    if(err) {
+      console.log(err);
+      return res.render("register");
+    }
+    passport.authenticate('local')(req, res, function() {
+      res.redirect("/campgrounds");
+    });
+  });
 });
 
 app.listen(3000, () => 
