@@ -2,9 +2,12 @@ var express     = require('express'),
     app         = express(),
     bodyParser  = require('body-parser'),
     mongoose    = require('mongoose'),
+    passport    = require('passport'),
+    localStrategy = require('passport-local'),
     Campground  = require("./models/campground"),
     seedDB      = require("./seeds"),
-    Comment     = require("./models/comment");
+    Comment     = require("./models/comment"),
+    User        = require('./models/user');
 
 // SET UP
 mongoose.connect("mongodb://localhost:27017/yelpcamp", { useNewUrlParser: true });
@@ -69,7 +72,6 @@ app.get("/campgrounds/:id", function(req, res) {
   });
 });
 
-
 // =========================
 // COMMENTS ROUTES
 // =========================
@@ -108,7 +110,6 @@ app.post("/campgrounds/:id/comments", function(req, res) {
   // connect new comment to campground
   // redirect to campground show page
 });
-
 
 app.listen(3000, () => 
 console.log('YelpCamp server started on port 3000!'));
