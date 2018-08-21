@@ -6,7 +6,8 @@ var express           = require('express'),
     localStrategy     = require('passport-local'),
     seedDB            = require("./seeds"),
     User              = require('./models/user'), 
-    methodOverride    = require('method-override');
+    methodOverride    = require('method-override'),
+    flash             = require('connect-flash');
     
 // require routes
 var campgroundRoutes  = require('./routes/campgrounds'),
@@ -19,6 +20,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // seed the db with starter data if needed
 // seedDB();
@@ -40,7 +42,7 @@ app.use(function(req, res, next) { // passes currentUser to all routes
   next();
 });
 
-// order is important here move this to the back
+// order is important - move this to the back
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
 app.use("/", authRoutes);
