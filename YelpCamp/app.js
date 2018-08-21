@@ -39,6 +39,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(function(req, res, next) { // passes currentUser to all routes
   res.locals.currentUser = req.user;
+  res.locals.error       = req.flash("error");
+  res.locals.success     = req.flash("success");
   next();
 });
 
