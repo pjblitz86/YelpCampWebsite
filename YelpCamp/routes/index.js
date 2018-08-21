@@ -10,7 +10,7 @@ router.get("/", function(req, res) {
 
 // REGISTER get and post
 router.get('/register', function(req, res) {
-  res.render("register");
+  res.render("register", {page: 'register'});
 });
 
 // Sign up logic
@@ -30,7 +30,7 @@ router.post('/register', function(req, res) {
 
 // LOGIN get and post
 router.get("/login", function(req, res) {
-  res.render("login");
+  res.render("login", {page: 'login'});
 });
 
 // post login with middleware
