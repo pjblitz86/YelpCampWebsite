@@ -10,7 +10,7 @@ var campgroundSchema = new mongoose.Schema({
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      ref: "User" // associate campground with user
     },
     username: String
   },

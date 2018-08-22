@@ -30,10 +30,10 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
   // Create a new camground and save to db
   Campground.create(newCampground, function(err, newlyCreated) {
     if(err) {
-      console.log(err); // later will implement validation errors
+      console.log(err);
     } else {
       // redirect back to campgrounds page
-      res.redirect("/campgrounds"); // as a get req
+      res.redirect("/campgrounds");
     }
   });
 });
@@ -43,7 +43,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res) {
   res.render("campgrounds/new");
 });
 
-// GET: campground show page by id
+// GET: individual campground show page by id
 router.get("/:id", function(req, res) {
   // find campground with provided ID
   Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground) {
@@ -77,7 +77,6 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res) {
       res.redirect("/campgrounds/" + req.params.id);
     }
   });
-  // redirect to show page
 });
 
 // DESTROY

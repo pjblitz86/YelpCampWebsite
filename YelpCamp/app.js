@@ -38,13 +38,14 @@ app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-app.use(function(req, res, next) { // passes currentUser to all routes
+app.use(function(req, res, next) { // passes currentUser and flash messaging to all routes
   res.locals.currentUser = req.user;
   res.locals.error       = req.flash("error");
   res.locals.success     = req.flash("success");
   next();
 });
 
+// USE THE ROUTES
 // order is important - move this to the back
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);

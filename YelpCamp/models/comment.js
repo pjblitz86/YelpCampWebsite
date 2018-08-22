@@ -6,7 +6,7 @@ var commentSchema = mongoose.Schema({
   author: {
     id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User"
+      ref: "User" // associate comment with user
     },
     username: String
   }
